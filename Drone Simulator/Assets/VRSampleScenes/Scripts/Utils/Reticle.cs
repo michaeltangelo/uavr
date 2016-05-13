@@ -37,6 +37,10 @@ namespace VRStandardAssets.Utils
             m_OriginalRotation = m_ReticleTransform.localRotation;
         }
 
+		void Start(){
+		}
+			
+
 
         public void Hide()
         {
