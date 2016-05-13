@@ -17,15 +17,14 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
         private const float k_RpmToDps = 60f;     // For converting from revs per minute to degrees per second.
         private Renderer m_PropellorModelRenderer;
         private Renderer m_PropellorBlurRenderer;
-        private GameObject Propeller;
+
 
         private void Awake()
         {
             // Set up the reference to the aeroplane controller.
             m_Plane = GetComponent<AeroplaneController>();
-            Propeller = GameObject.Find("propeller");
-            //m_PropellorModelRenderer = m_PropellorModel.GetComponent<Renderer>();
-            m_PropellorModelRenderer = Propeller.GetComponent<Renderer>();
+
+            m_PropellorModelRenderer = m_PropellorModel.GetComponent<Renderer>();
             m_PropellorBlurRenderer = m_PropellorBlur.GetComponent<Renderer>();
 
             // Set the propellor blur gameobject's parent to be the propellor.
@@ -36,7 +35,7 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
         private void Update()
         {
             // Rotate the propellor model at a rate proportional to the throttle.
-            m_PropellorModel.Rotate(0, 0, m_MaxRpm * m_Plane.Throttle * Time.deltaTime * k_RpmToDps);
+            m_PropellorModel.Rotate(0, m_MaxRpm*m_Plane.Throttle*Time.deltaTime*k_RpmToDps, 0);
 
             // Create an integer for the new state of the blur textures.
             var newBlurState = 0;
@@ -62,7 +61,7 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
                 else
                 {
                     // Otherwise turn off the propellor model and turn on the blur.
-                    m_PropellorModelRenderer.enabled = true;
+                    m_PropellorModelRenderer.enabled = false;
                     m_PropellorBlurRenderer.enabled = true;
 
                     // set the appropriate texture from the blur array
