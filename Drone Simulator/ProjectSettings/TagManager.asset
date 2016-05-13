@@ -8,6 +8,7 @@ TagManager:
   - Underbelly
   - sphere
   - target
+  - missile
   layers:
   - Default
   - TransparentFX

@@ -15,9 +15,16 @@ public class MissileControl : MonoBehaviour {
     public GameObject missileModel;
     public Transform Target;
     public GameObject Explosion;
+    public int liveMissileCount;
 
     // Use this for initialization
     void Start () {
+        liveMissileCount = 0;
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("missile"))
+        {
+            liveMissileCount++;
+        }
+        if (liveMissileCount > 2) Destroy(gameObject);
         Missile = transform.GetComponent<Rigidbody>();
         Fire();
 	}
@@ -52,7 +59,6 @@ public class MissileControl : MonoBehaviour {
     {
         if(col.gameObject.tag == "target")
         {
-            Debug.Log("Collided!");
             Instantiate(Explosion, col.gameObject.transform.position, Quaternion.identity);
             smokePrefab.Stop();
             Destroy(missileModel.gameObject);

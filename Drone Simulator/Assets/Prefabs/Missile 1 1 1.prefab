@@ -63,7 +63,7 @@ GameObject:
   - 82: {fileID: 8213694}
   m_Layer: 0
   m_Name: Missile 1 1 1
-  m_TagString: Untagged
+  m_TagString: missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -436,7 +436,8 @@ MonoBehaviour:
   smokePrefab: {fileID: 19847272}
   missileModel: {fileID: 111948}
   Target: {fileID: 0}
-  Explosion: {fileID: 197910, guid: 20188e60c0e369a42afd6ccb69bfa402, type: 2}
+  Explosion: {fileID: 129148, guid: 78c62e42dd2287a40bc56224902f6f28, type: 2}
+  liveMissileCount: 0
 --- !u!136 &13683942
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1981,7 +1982,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Explosion
+      value: 
+      objectReference: {fileID: 129148, guid: 78c62e42dd2287a40bc56224902f6f28, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126588}
