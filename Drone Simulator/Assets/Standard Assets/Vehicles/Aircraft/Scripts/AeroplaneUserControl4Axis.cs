@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Vehicles.Aeroplane
@@ -27,6 +28,7 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
 		private bool m_ToggleOperatorMode;
         private bool m_ToggleLock;
         private bool squarePressed;
+        private bool trianglePressed;
 
         // control room references
 
@@ -44,8 +46,14 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
 
         // missile properties
         public Rigidbody Missile;
-        public Transform Launcher;
+        public Transform[] Launchers;
+        private Transform Launcher;
         public GameObject Target;
+        private bool canFire;
+
+        // material switches for screen
+        public Material[] screenMats;
+        public GameObject QuadScreen;
 
         float roll;
         float pitch;
@@ -63,7 +71,15 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
 		public void togglePilotMode()
 		{
 			pilotMode = !pilotMode;
-		}
+            if (pilotMode)
+            {
+                QuadScreen.GetComponent<Renderer>().material = screenMats[0];
+            }
+            else
+            {
+                QuadScreen.GetComponent<Renderer>().material = screenMats[1];
+            }
+        }
         
         public void toggleLockMode()
         {
@@ -73,6 +89,9 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
 
 		private void Awake()
 		{
+            // configure initial launcher (right)
+            Launcher = Launchers[0];
+
 			// Set up the reference to the aeroplane controller.
 			m_Aeroplane = GetComponent<AeroplaneController>();
             CameraBay = GameObject.Find("UnderbellyCam");
@@ -82,11 +101,14 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
             line.SetVertexCount(2);
             line.GetComponent<Renderer>().material= lineMat;
             line.SetWidth(0.01f, 0.05f);
+            canFire = false;
 
 		}
 
         private void LockLaser()
         {
+            canFire = true;
+
             GameObject go = GameObject.FindGameObjectWithTag("target");
             Destroy(go);
             RaycastHit hit;
@@ -127,15 +149,29 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
                 m_ToggleOperatorMode = CrossPlatformInputManager.GetButtonDown("PS3ControllerOButton");
                 m_ToggleLock = CrossPlatformInputManager.GetButtonDown("PS3ControllerLock");
                 squarePressed = CrossPlatformInputManager.GetButton("PS3ControllerSquare");
+                trianglePressed = CrossPlatformInputManager.GetButtonDown("PS3ControllerTriangle");
+
             }
             if (squarePressed)
             {
                 UnityEngine.VR.InputTracking.Recenter();
             }
+            if (trianglePressed)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
             if (m_ToggleOperatorMode) togglePilotMode();
+            // firing
             if (m_AirBrakes)
             {
-                Rigidbody missileClone = (Rigidbody)Instantiate(Missile, Launcher.transform.position, Launcher.transform.rotation);
+                if (canFire)
+                {
+                    Rigidbody missileClone = (Rigidbody)Instantiate(Missile, Launcher.transform.position, Launcher.transform.rotation);
+
+                    // switch launchers
+                    if (Launcher == Launchers[0]) Launcher = Launchers[1];
+                    else if (Launcher == Launchers[1]) Launcher = Launchers[0];
+                }
             }
             if (m_ToggleLock)
             {

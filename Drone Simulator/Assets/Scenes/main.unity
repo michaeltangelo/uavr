@@ -336,7 +336,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 29364969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0067, y: 0.121, z: 0.0812}
+  m_LocalPosition: {x: -0.0067, y: 0.121, z: 0.0814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 785235386}
@@ -1057,7 +1057,7 @@ Transform:
   m_LocalScale: {x: 130.60806, y: 130.60782, z: 130.60782}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &170534311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,8 +1813,14 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0a752e79a94cb684da1e30c2c69924f4, type: 2}
   - {fileID: 2100000, guid: 51e027eb2bbfd7d40bbf53882d776ee1, type: 2}
   Missile: {fileID: 5477428, guid: 77be078a03663f643818eef8f321d88a, type: 2}
-  Launcher: {fileID: 899667678}
+  Launchers:
+  - {fileID: 899667678}
+  - {fileID: 880657196}
   Target: {fileID: 191922, guid: eeecc5beecf33a94aa11e68cd12150cf, type: 2}
+  screenMats:
+  - {fileID: 2100000, guid: a7eba25e46b9cae4b992bc25190e787c, type: 2}
+  - {fileID: 2100000, guid: 62d2d5b93d9cea64cb73447e99603516, type: 2}
+  QuadScreen: {fileID: 2141377790}
 --- !u!114 &255679735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,7 +2122,7 @@ Transform:
   m_Children:
   - {fileID: 1700347653}
   m_Father: {fileID: 1349958019}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &271078414
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,7 +4131,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1349958019}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!23 &482015545
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4754,7 +4760,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 404204, guid: eeecc5beecf33a94aa11e68cd12150cf, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 13546188, guid: eeecc5beecf33a94aa11e68cd12150cf, type: 2}
       propertyPath: m_Radius
@@ -5766,7 +5772,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1349958019}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!23 &695104231
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6389,7 +6395,7 @@ Transform:
   - {fileID: 866564247}
   - {fileID: 425715848}
   m_Father: {fileID: 1349958019}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!1 &780284982
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,7 +6869,7 @@ Transform:
   m_Children:
   - {fileID: 1414562372}
   m_Father: {fileID: 1349958019}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1 &807303938
 GameObject:
   m_ObjectHideFlags: 0
@@ -7397,6 +7403,34 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 871518591}
+  cam: {fileID: 0}
+--- !u!1 &880657195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 880657196}
+  m_Layer: 0
+  m_Name: Missile_Launcher_L
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &880657196
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880657195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.107, y: 0.092, z: 0.064}
+  m_LocalScale: {x: 0.028571429, y: 0.028571429, z: 0.028571429}
+  m_Children: []
+  m_Father: {fileID: 1349958019}
+  m_RootOrder: 9
 --- !u!1 &886732732
 GameObject:
   m_ObjectHideFlags: 0
@@ -7598,7 +7632,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 899667678}
   m_Layer: 0
-  m_Name: Missile_R
+  m_Name: Missile_Launcher_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10773,7 +10807,7 @@ Transform:
   - {fileID: 369858838}
   - {fileID: 1712679093}
   m_Father: {fileID: 1349958019}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &1262736538
 GameObject:
   m_ObjectHideFlags: 0
@@ -11691,6 +11725,7 @@ Transform:
   - {fileID: 817321148}
   - {fileID: 1277700204}
   - {fileID: 899667678}
+  - {fileID: 880657196}
   - {fileID: 482015544}
   - {fileID: 1262078486}
   - {fileID: 270064748}
@@ -12130,7 +12165,7 @@ Transform:
   m_Children:
   - {fileID: 398230450}
   m_Father: {fileID: 1349958019}
-  m_RootOrder: 14
+  m_RootOrder: 15
 --- !u!1 &1453360494
 GameObject:
   m_ObjectHideFlags: 0
@@ -14282,7 +14317,7 @@ Transform:
   - {fileID: 780284983}
   - {fileID: 943132223}
   m_Father: {fileID: 1349958019}
-  m_RootOrder: 15
+  m_RootOrder: 16
 --- !u!1 &1787052598
 GameObject:
   m_ObjectHideFlags: 0
@@ -14358,6 +14393,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 22277334, guid: fd938a6ca142a6046b570f79dc924407,
     type: 2}
   m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1787052598}
   m_GameObject: {fileID: 1787052598}
 --- !u!1 &1793392438
 GameObject:
@@ -16685,11 +16721,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.010900268
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.14173333
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -17327,7 +17363,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6d8386054b76f1a43b36fe50371b1ee8, type: 2}
+  - {fileID: 2100000, guid: a7eba25e46b9cae4b992bc25190e787c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
