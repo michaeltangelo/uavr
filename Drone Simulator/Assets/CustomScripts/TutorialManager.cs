@@ -60,8 +60,8 @@ public class TutorialManager : MonoBehaviour {
 	int operatingMode = 0;
 
 	void Awake(){
-		pilotLeftCtrlMrkr.SetActive(false);
-		pilotRightCtrlMrkr.SetActive(false);
+		if(pilotLeftCtrlMrkr) pilotLeftCtrlMrkr.SetActive(false);
+		if(pilotRightCtrlMrkr) pilotRightCtrlMrkr.SetActive(false);
 		dialogBoxTransform = dialogBoxRoot.GetComponent<RectTransform>();
 	}
 
@@ -101,7 +101,7 @@ public class TutorialManager : MonoBehaviour {
 		//tell user to push the left control stick
 		//only allow user to look front
 	}
-
+		
 	public void SwitchMode(){
 		operatingMode = 1 - operatingMode;
 		if(operatingMode == 0) opModeText.text = "Pilot Mode";

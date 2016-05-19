@@ -141,11 +141,17 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
             else
             {
                 // ps4 controller map https://www.reddit.com/r/Unity3D/comments/1syswe/ps4_controller_map_for_unit/
-                roll = CrossPlatformInputManager.GetAxis("PS3ControllerRightX");
-                pitch = CrossPlatformInputManager.GetAxis("PS3ControllerRightY");
-                m_AirBrakes = CrossPlatformInputManager.GetButtonDown("Fire1"); // Joystick 4 aka L1 on PS4 Controller
-                m_Yaw = CrossPlatformInputManager.GetAxis("PS3ControllerRightX");
-                m_Throttle = CrossPlatformInputManager.GetAxis("PS3ControllerThrottleY");
+//                roll = CrossPlatformInputManager.GetAxis("PS3ControllerRightX");
+//                pitch = CrossPlatformInputManager.GetAxis("PS3ControllerRightY");
+//				m_AirBrakes = CrossPlatformInputManager.GetButtonDown("Fire1"); // Joystick 4 aka L1 on PS4 Controller
+//				m_Yaw = CrossPlatformInputManager.GetAxis("PS3ControllerRightX");
+//				m_Throttle = CrossPlatformInputManager.GetAxis("PS3ControllerThrottleY");
+				roll = CrossPlatformInputManager.GetAxis("Horizontal");
+				pitch = CrossPlatformInputManager.GetAxis("Vertical");
+				m_AirBrakes = CrossPlatformInputManager.GetButton("Fire1");
+				m_Yaw = CrossPlatformInputManager.GetAxis("Horizontal");
+				m_Throttle = CrossPlatformInputManager.GetAxis("Throttle_Vertical");
+
                 m_ToggleOperatorMode = CrossPlatformInputManager.GetButtonDown("PS3ControllerOButton");
                 m_ToggleLock = CrossPlatformInputManager.GetButtonDown("PS3ControllerLock");
                 squarePressed = CrossPlatformInputManager.GetButton("PS3ControllerSquare");
